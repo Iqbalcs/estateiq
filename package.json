@@ -1,0 +1,30 @@
+{
+  "name": "estateiq",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EstateIQ real estate analytics and property management platform",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,cyan \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "lint": "npm run lint -w client && npm run lint -w server",
+    "test": "npm run test -w server && npm run test -w client",
+    "test:coverage": "npm run test:coverage -w server && npm run test:coverage -w client",
+    "db:migrate": "npm run db:migrate -w server",
+    "db:seed": "npm run db:seed -w server",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.2",
+    "concurrently": "^10.0.6",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.9.10"
+  },
+  "engines": {
+    "node": ">=22.22.2"
+  }
+}
